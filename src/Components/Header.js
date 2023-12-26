@@ -1,21 +1,22 @@
 import React, { Fragment } from 'react'
 import { LuPhoneCall } from "react-icons/lu";
 import { IoMdMail } from "react-icons/io";
-import { Link } from 'react-router-dom';
-import logo from '../assets/images/apneck.png'
+import { Link, useLocation } from 'react-router-dom';
+import logo from '../assets/images/SamadhanDressesLogo.jpg'
 import { HiOutlineInboxArrowDown } from "react-icons/hi2";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { CgShoppingCart } from "react-icons/cg";
 
 
 function Header() {
+  const location = useLocation();
   return (
     <Fragment>
       <header className='header-top-strip p-1 shadow-sm'>
         <div className='container-xxl'>
           <div className='row'>
             <div className='col-6'>
-              <p>Trending outfits at 100% off</p>
+              <p>Trending outfits at upto 100% off</p>
             </div>
             <div className='col-6 d-flex justify-content-between'>
               <div>
@@ -44,16 +45,31 @@ function Header() {
               </div>
             </div>
             <div className='col-4 nav-links d-flex align-items-center justify-content-between'>
-              <Link to={'/'}>Home</Link>
-              <Link to={'shop'}>Shop</Link>
-              <Link to={'blogs'}>Blogs</Link>
-              <Link to={'about'}>About</Link>
-              <Link to={'contacts'}>Contacts</Link>
+              <Link to={'/'} className={location.pathname === '/' ? 'active' : 'inactive'}>Home</Link>
+              <Link to={'shop'} className={location.pathname === '/shop' ? 'active' : 'inactive'}>Shop</Link>
+              <Link to={'blogs'} className={location.pathname === '/blogs' ? 'active' : 'inactive'}>Blogs</Link>
+              <Link to={'about'} className={location.pathname === '/about' ? 'active' : 'inactive'}>About</Link>
+              <Link to={'contacts'} className={location.pathname === '/contacts' ? 'active' : 'inactive'}>Contacts</Link>
             </div>
             <div className='col-3 d-flex align-items-center justify-content-around'>
-              <Link to={'wishlist'} className='d-flex'><HiOutlineInboxArrowDown className='fs-3 mx-2' /><p>Wishlist</p></Link>
-              <Link to={'login'} className='d-flex'><MdOutlineAccountCircle className='fs-3 mx-2' /> <p>Account</p></Link>
-              <Link to={'cart'} className='d-flex'><CgShoppingCart className='fs-3 mx-2' /><p>Cart</p></Link>
+              <Link to={'wishlist'} className={location.pathname === '/wishlist' ? 'active' : 'inactive'}>
+                <div className='d-flex'>
+                  <span><HiOutlineInboxArrowDown className='fs-3 mx-2' /></span>
+                  <p>Wishlist</p>
+                </div>
+              </Link>
+              <Link to={'login'} className={location.pathname === '/login' ? 'active' : 'inactive'}>
+                <div className='d-flex'>
+                  <span><MdOutlineAccountCircle className='fs-3 mx-2' /> </span>
+                  <p>Account</p>
+                </div>
+              </Link>
+              <Link to={'cart'} className={location.pathname === '/cart' ? 'active' : 'inactive'}>
+                <div className='d-flex'>
+                  <span><CgShoppingCart className='fs-3 mx-2' /></span>
+                  <p>Cart</p>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
